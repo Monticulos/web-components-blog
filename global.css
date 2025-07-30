@@ -16,8 +16,10 @@ body {
 }
 
 main {
-    padding-inline: 20%;
+    width: min(500px, 90%);
+    padding-inline: 5%;
     padding-block: 5%;
+    margin-inline: auto;
 }
 
 h1,

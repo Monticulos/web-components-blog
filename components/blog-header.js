@@ -10,7 +10,7 @@ export class BlogHeader extends HTMLElement {
                 align-items: center;
                 justify-content: space-between;
                 border-bottom: 2px solid #ccc;
-                padding-inline: 3rem;
+                padding-inline: min(3rem, 5%);
                 padding-block: 1rem;
             }
 
@@ -20,8 +20,8 @@ export class BlogHeader extends HTMLElement {
         </style>
         
         <header>
-            <h1><a href="./index.html">The Blog</a></h1>
-            <a href="./archive.html">Archive</a>
+            <h1><a href="./index.html">Bloggen</a></h1>
+            <a href="./archive.html">Arkiv</a>
         </header>
         `;
     }
