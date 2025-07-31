@@ -18,6 +18,10 @@ export class BlogHeader extends HTMLElement {
                 margin-bottom: 0;
             }
 
+            :host h1 > a {
+                text-decoration: none;
+            }
+
             .action-bar {
                 display: flex;
                 align-items: center;
