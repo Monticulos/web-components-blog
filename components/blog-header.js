@@ -17,11 +17,20 @@ export class BlogHeader extends HTMLElement {
             h1 {
                 margin-bottom: 0;
             }
+
+            .action-bar {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
         </style>
         
         <header>
             <h1><a href="./index.html">Bloggen</a></h1>
-            <a href="./archive.html">Arkiv</a>
+            <div class="action-bar">
+                <a href="./archive.html">Arkiv</a>
+                <blog-theme-switch></blog-theme-switch>
+            </div>
         </header>
         `;
     }
