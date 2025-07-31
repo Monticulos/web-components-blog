@@ -3,7 +3,7 @@ import { moonIcon } from "../icons/moonIcon.js";
 import { Theme } from "../utils/Theme.js";
 import { themes } from "../constants/themes.js";
 
-export class BlogThemeSwitch extends HTMLElement {
+export class BlogThemeToggle extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: "open" });
