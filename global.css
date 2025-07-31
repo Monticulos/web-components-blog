@@ -29,7 +29,7 @@ body.dark {
 }
 
 main {
-    width: min(500px, 90%);
+    max-width: 75ch;
     padding-inline: 5%;
     padding-block: 5%;
     margin-inline: auto;
