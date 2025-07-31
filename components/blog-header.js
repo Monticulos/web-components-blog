@@ -1,5 +1,5 @@
 export class BlogHeader extends HTMLElement {
-    async connectedCallback() {
+    connectedCallback() {
         const shadow = this.attachShadow({ mode: "open" });
 
         shadow.innerHTML = `
@@ -9,7 +9,7 @@ export class BlogHeader extends HTMLElement {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                border-bottom: 2px solid #ccc;
+                border-bottom: 2px solid var(--border-color);
                 padding-inline: min(3rem, 5%);
                 padding-block: 1rem;
             }

@@ -1,5 +1,5 @@
 export class BlogArchive extends HTMLElement {
-    async connectedCallback() {
+    connectedCallback() {
         const shadow = this.attachShadow({ mode: "open" });
 
         shadow.innerHTML = `
