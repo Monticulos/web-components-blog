@@ -15,6 +15,6 @@ export default {
     lastUpdatedDate: "",
     lastUpdatedTime: "",
     slugs: ["velkommen-til-bloggen", "velkommen"],
-    tags: ["Bloggen"],
+    tags: ["Bloggen", "Test", "Tag"],
     bodyText
 }
