@@ -1,13 +1,4 @@
-import { getLatestEntrySlug, getFilenameFromSlug } from '../entries/index.js';
-
-const loadEntryModule = async (filename) => {
-    const entryModule = await import(`../entries/${filename}.js`);
-    return entryModule.default;
-};
-const getEntry = async (slug) => {
-    const filename = await getFilenameFromSlug(slug) || slug;
-    return await loadEntryModule(filename);
-};
+import { EntryManager } from '../utils/EntryManager.js';
 
 export class BlogEntry extends HTMLElement {
     async connectedCallback() {
@@ -33,7 +24,7 @@ export class BlogEntry extends HTMLElement {
     async renderEntryFromSlug(shadow) {
         const slug = window.location.hash.slice(1);
         try {
-            const entry = await getEntry(slug);
+            const entry = await EntryManager.getEntry(slug);
             this.renderEntry(shadow, entry);
         } catch (error) {
             await this.renderError(shadow);
@@ -41,8 +32,8 @@ export class BlogEntry extends HTMLElement {
     }
 
     async renderLatestEntry(shadow) {
-        const latestSlug = await getLatestEntrySlug();
-        const entry = await getEntry(latestSlug);
+        const latestSlug = await EntryManager.getLatestEntrySlug();
+        const entry = await EntryManager.getEntry(latestSlug);
         this.renderEntry(shadow, entry);
     }
 
@@ -58,7 +49,7 @@ export class BlogEntry extends HTMLElement {
     }
 
     async renderError(shadow) {
-        const latestSlug = await getLatestEntrySlug();
+        const latestSlug = await EntryManager.getLatestEntrySlug();
         shadow.innerHTML = `
             <link rel="stylesheet" href="/global.css" />
             <main>
