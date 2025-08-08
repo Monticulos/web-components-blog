@@ -1,3 +1,5 @@
+import { pencilLineIcon } from "../icons/pencilLineIcon.js";
+
 export class BlogHeader extends HTMLElement {
     connectedCallback() {
         const shadow = this.attachShadow({ mode: "open" });
@@ -16,10 +18,14 @@ export class BlogHeader extends HTMLElement {
 
             h1 {
                 margin-bottom: 0;
+                
             }
 
-            :host h1 > a {
-                text-decoration: none;
+            .heading-link {
+                text-decoration: none !important;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
             }
 
             .action-bar {
@@ -30,7 +36,9 @@ export class BlogHeader extends HTMLElement {
         </style>
         
         <header>
-            <h1><a href="./index.html">Bloggen</a></h1>
+            <h1>
+                <a class="heading-link" href="./index.html">Bloggen ${pencilLineIcon}</a>
+            </h1>
             <div class="action-bar">
                 <a href="./archive.html">Arkiv</a>
                 <blog-theme-switch></blog-theme-switch>
