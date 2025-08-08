@@ -48,10 +48,8 @@ The application uses ES modules with static imports. New blog entries should fol
 
 ## Code Style
 
-This codebase follows a pattern of using **small helper functions** to improve readability and reduce duplication. When writing or refactoring components:
-
-- Extract logic into descriptive helper functions (e.g., `getEntryFromHash()`, `getEntry()`)
-- Use helper functions to eliminate repetitive code patterns
-- Keep helper functions focused on single responsibilities
-- Place helper functions at the top of files before the main component class
+When writing or refactoring components:
+- Follow the single responsibility principle
 - All text shown to the user should be in Norwegian
+- Follow the DRY (Do not Repeat Yourself) principle
+- Keep functions short
