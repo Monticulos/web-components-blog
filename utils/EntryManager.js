@@ -15,7 +15,7 @@ export class EntryManager {
     }
 
     static async getLatestEntrySlug() {
-        const latestFilename = entries[0];
+        const latestFilename = entries[entries.length - 1];
         const entry = await this.loadEntryModule(latestFilename);
         return entry.slugs[0];
     }

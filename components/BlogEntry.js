@@ -13,16 +13,15 @@ export class BlogEntry extends HTMLElement {
     }
 
     async loadAndRenderEntry(shadow) {
-        const hasHash = window.location.hash.length > 1;
-        if (hasHash) {
-            this.renderEntryFromSlug(shadow);
+        const slug = window.location.hash.slice(1);
+        if (slug) {
+            this.renderEntryFromSlug(shadow, slug);
         } else {
             this.renderLatestEntry(shadow);
         }
     }
 
-    async renderEntryFromSlug(shadow) {
-        const slug = window.location.hash.slice(1);
+    async renderEntryFromSlug(shadow, slug) {
         try {
             const entry = await EntryManager.getEntry(slug);
             this.renderEntry(shadow, entry);
