@@ -2,7 +2,7 @@ import { themes } from "../constants/themes.js";
 
 export class Theme {
     static get() {
-        return localStorage.getItem('theme-preference') ?? themes.light;
+        return localStorage.getItem('theme-preference') ?? this.getMediaQueryColorScheme();
     }
 
     static set(theme) {
@@ -18,5 +18,10 @@ export class Theme {
     static isLight() {
         const currentTheme = Theme.get();
         return currentTheme === themes.light;
+    }
+
+    static getMediaQueryColorScheme() {
+        const hasDarkPreference = window.matchMedia("(prefers-color-scheme: dark)");
+        return hasDarkPreference ? themes.dark : themes.light;
     }
 }
