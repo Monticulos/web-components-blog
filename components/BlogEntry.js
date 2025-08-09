@@ -1,4 +1,5 @@
 import { EntryManager } from '../utils/EntryManager.js';
+import { BlogTags } from './BlogTags.js';
 
 export class BlogEntry extends HTMLElement {
     async connectedCallback() {
@@ -36,15 +37,30 @@ export class BlogEntry extends HTMLElement {
         this.renderEntry(shadow, entry);
     }
 
+
     renderEntry(shadow, entry) {
         shadow.innerHTML = `
             <link rel="stylesheet" href="/global.css" />
+            <style>
+                .metadata {
+                    display: flex;
+                    align-items: baseline;
+                    gap: 0.5rem;
+                }
+            </style>
             <main>
                 <h1>${entry.title}</h1>
-                <p>${entry.publishedDate}</p>
+                <span class="metadata">
+                    <p>${entry.publishedDate}</p> 
+                    <span>|</span>
+                </span>
                 <div>${entry.bodyText}</div>
             </main>
         `;
+        
+        const blogTags = document.createElement('blog-tags');
+        blogTags.tags = entry.tags;
+        shadow.querySelector('.metadata').appendChild(blogTags);
     }
 
     async renderError(shadow) {
