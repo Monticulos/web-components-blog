@@ -30,7 +30,7 @@ export class EntryNavigation extends HTMLElement {
 
                 a:after {
                     content: "|";
-                    padding-inline: 1rem;
+                    padding-inline: 0.5rem;
                 }
                 
                 a:last-child:after {
