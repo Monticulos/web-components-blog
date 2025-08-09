@@ -2,14 +2,14 @@ import { EntryManager } from "../utils/EntryManager.js"
 
 export class BlogArchive extends HTMLElement {
     async connectedCallback() {
-        const shadow = this.attachShadow({ mode: "open" });
-        this.renderArchive(shadow);
+        this.attachShadow({ mode: "open" });
+        this.renderArchive();
     }
 
-    async renderArchive(shadow) {
+    async renderArchive() {
         const entries = await EntryManager.getEntriesAsArray();
 
-        shadow.innerHTML = `
+        this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="./global.css" />
         <style>
             ul {
