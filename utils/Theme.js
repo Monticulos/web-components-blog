@@ -11,6 +11,7 @@ export class Theme {
 
     static switch() {
         this.switchStored();
+        this.enableTransition();
         this.updateClassList();
     }
 
@@ -19,14 +20,16 @@ export class Theme {
         this.set(newTheme);
     }
 
+    static enableTransition() {
+        document.body.classList.add("transition");
+        addEventListener("transitionend", () => {
+            document.body.classList.remove("transition")
+        }, { once: true });
+    }
+
     static updateClassList() {
-        if (this.isLight()) {
-            document.body.classList.add(themes.light);
-            document.body.classList.remove(themes.dark);
-        } else {
-            document.body.classList.add(themes.dark);
-            document.body.classList.remove(themes.light);
-        }
+        document.body.classList.toggle(themes.light, this.isLight());
+        document.body.classList.toggle(themes.dark, !this.isLight());
     }
 
     static isLight() {
@@ -35,7 +38,7 @@ export class Theme {
     }
 
     static getMediaQueryColorScheme() {
-        const hasDarkPreference = window.matchMedia("(prefers-color-scheme: dark)");
+        const hasDarkPreference = window.matchMedia("(prefers-color-scheme: dark)").matches;
         return hasDarkPreference ? themes.dark : themes.light;
     }
 }

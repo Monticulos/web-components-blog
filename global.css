@@ -30,6 +30,12 @@ body.dark {
     --border-color: #333;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+    body.transition {
+        transition: 0.3s ease;
+    }
+}
+
 main {
     max-width: 75ch;
     padding-inline: 5%;
