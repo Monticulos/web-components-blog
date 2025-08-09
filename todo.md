@@ -1,4 +1,7 @@
 # To do
-* Egen side for tagger/kategorier/emner
-* Transition animation when switching page
+* Ordentlig posisjonering for forrige/neste-innlegg navigasjon
+* Vise tagger på arkiv-siden
+* Søkeboks på arkiv-siden
+* Transition for theme switch
+* Lage loading state (kan løses med transitions)
 * Lese https://kinsta.com/blog/web-components/

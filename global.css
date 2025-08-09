@@ -63,8 +63,3 @@ p {
     margin-bottom: 1rem;
     line-height: 150%;
 }
-
-/* Not supported by Firefox */ 
-@view-transition {
-    navigation: auto;
-}
