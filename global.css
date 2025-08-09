@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+:root {
+    color-scheme: light dark;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,18 +16,20 @@ html {
 body {
     font-family: 'Inter', sans-serif;
     height: 100%;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 body.light {
-    background-color: #eee;
-    color: #000;
+    --background-color: #eee;
+    --text-color: #000;
     --hover-color: #ddd;
     --border-color: #ccc;
 }
 
 body.dark {
-    background-color: #111;
-    color: #fff;
+    --background-color: #111;
+    --text-color: #fff;
     --hover-color: #222;
     --border-color: #333;
 }
