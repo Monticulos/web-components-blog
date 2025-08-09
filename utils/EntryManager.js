@@ -1,4 +1,4 @@
-import { entries } from '../entries/index.js';
+import { entryFileNames } from '../entries/index.js';
 
 export class EntryManager {
     static slugToFilenameMap = new Map();
@@ -14,8 +14,12 @@ export class EntryManager {
         return await this.loadEntryModule(filename);
     }
 
+    static async getEntriesAsArray() {
+        return Promise.all(entryFileNames.map(this.loadEntryModule))
+    }
+
     static async getLatestEntrySlug() {
-        const latestFilename = entries[entries.length - 1];
+        const latestFilename = entryFileNames[entryFileNames.length - 1];
         const entry = await this.loadEntryModule(latestFilename);
         return entry.slugs[0];
     }
@@ -28,10 +32,10 @@ export class EntryManager {
     static async buildSlugMap() {
         if (this.isSlugMapBuilt) return;
 
-        for (const filename of entries) {
+        for (const filename of entryFileNames) {
             await this.processEntryForSlugMap(filename);
         }
-        
+
         this.isSlugMapBuilt = true;
     }
 
