@@ -1,4 +1,4 @@
-// Add new entries here (oldest first)
+// Add new entries here (newest first)
 export const entryFileNames = [
     '2025-08-09',
     '2025-08-08',
