@@ -18,7 +18,7 @@ export class BlogThemeToggle extends HTMLElement {
 
     renderButton() {
         this.shadowRoot.innerHTML = `
-        <link rel="stylesheet" href="/global.css" />
+        <link rel="stylesheet" href="./global.css" />
         <style>
             button {
                 display: flex;

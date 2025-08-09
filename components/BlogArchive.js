@@ -10,7 +10,7 @@ export class BlogArchive extends HTMLElement {
         const entries = await EntryManager.getEntriesAsArray();
 
         shadow.innerHTML = `
-        <link rel="stylesheet" href="/global.css" />
+        <link rel="stylesheet" href="./global.css" />
         <style>
             ul {
                 list-style-type: none;

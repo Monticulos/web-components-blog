@@ -41,7 +41,7 @@ export class BlogEntry extends HTMLElement {
 
     renderEntry(shadow, entry) {
         shadow.innerHTML = `
-            <link rel="stylesheet" href="/global.css" />
+            <link rel="stylesheet" href="./global.css" />
             <style>
                 .metadata {
                     display: flex;
@@ -71,7 +71,7 @@ export class BlogEntry extends HTMLElement {
     async renderError(shadow) {
         const latestSlug = await EntryManager.getLatestEntrySlug();
         shadow.innerHTML = `
-            <link rel="stylesheet" href="/global.css" />
+            <link rel="stylesheet" href="./global.css" />
             <main>
                 <h1>Innlegg ikke funnet</h1>
                 <p><a href="#${latestSlug}">Gå til siste innlegg</a></p>

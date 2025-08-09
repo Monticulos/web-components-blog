@@ -17,7 +17,7 @@ export class EntryNavigation extends HTMLElement {
 
     async renderNavigation() {
         this.shadowRoot.innerHTML = `
-            <link rel="stylesheet" href="/global.css" />
+            <link rel="stylesheet" href="./global.css" />
             <style>
                 nav {
                     margin-top: 50%;

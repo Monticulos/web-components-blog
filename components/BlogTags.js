@@ -15,7 +15,7 @@ export class BlogTags extends HTMLElement {
 
     renderTags() {
         this.shadowRoot.innerHTML = `
-            <link rel="stylesheet" href="/global.css" />
+            <link rel="stylesheet" href="./global.css" />
             <style>
                 .tags {
                     font-style: italic;

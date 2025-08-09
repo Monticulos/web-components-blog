@@ -6,7 +6,7 @@ export class BlogHeader extends HTMLElement {
         const shadow = this.attachShadow({ mode: "open" });
 
         shadow.innerHTML = `
-        <link rel="stylesheet" href="/global.css" />
+        <link rel="stylesheet" href="./global.css" />
         <style>
             header {
                 display: flex;
