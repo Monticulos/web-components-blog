@@ -1,11 +1,8 @@
 export class BlogTags extends HTMLElement {
-    constructor() {
-        super();
-        this._tags = [];
-    }
+    #tags = [];
 
     set tags(value) {
-        this._tags = value || [];
+        this.#tags = value || [];
         if (this.shadowRoot) {
             this.render();
         }
@@ -25,7 +22,7 @@ export class BlogTags extends HTMLElement {
                 }
             </style>
             <span class="tags">
-            ${this._tags.map(tag => `${tag}`).join(', ')}
+            ${this.#tags.map(tag => `${tag}`).join(', ')}
             </span>
         `;
     }
