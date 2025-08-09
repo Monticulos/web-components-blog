@@ -9,10 +9,24 @@ export class Theme {
         return localStorage.setItem('theme-preference', theme);
     }
 
-    static toggle() {
-        const newTheme = Theme.isLight() ? themes.dark : themes.light;
+    static switch() {
+        this.switchStored();
+        this.updateClassList();
+    }
+
+    static switchStored() {
+        const newTheme = this.isLight() ? themes.dark : themes.light;
         this.set(newTheme);
-        return newTheme;
+    }
+
+    static updateClassList() {
+        if (this.isLight()) {
+            document.body.classList.add(themes.light);
+            document.body.classList.remove(themes.dark);
+        } else {
+            document.body.classList.add(themes.dark);
+            document.body.classList.remove(themes.light);
+        }
     }
 
     static isLight() {

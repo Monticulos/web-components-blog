@@ -10,7 +10,7 @@ export class BlogThemeToggle extends HTMLElement {
     }
 
     connectedCallback() {
-        this.applyCss();
+        Theme.updateClassList();
         this.renderButton()
         this.renderIcon();
         this.addClickEventListener();
@@ -54,15 +54,8 @@ export class BlogThemeToggle extends HTMLElement {
     }
 
     handleClick() {
-        Theme.toggle();
+        Theme.switch();
         this.renderIcon();
-        this.applyCss();
-    }
-
-    applyCss() {
-        const isLight = Theme.isLight();
-        document.body.classList.toggle(themes.light, isLight);
-        document.body.classList.toggle(themes.dark, !isLight);
     }
 }
 
