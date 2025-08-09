@@ -45,7 +45,7 @@ export class BlogThemeToggle extends HTMLElement {
 
     renderIcon() {
         const button = this.shadowRoot.querySelector("button");
-        button.innerHTML = Theme.isLight() ? sunIcon : moonIcon;
+        button.innerHTML = Theme.isLight() ? moonIcon : sunIcon ;
     }
 
     addClickEventListener() {
