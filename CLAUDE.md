@@ -21,27 +21,33 @@ This is a blog application built with **Web Components** using vanilla JavaScrip
 ### Key Components
 - `blog-header`: Navigation and site header
 - `blog-entry`: Displays individual blog posts
-- `blog-main`: Main content area (placeholder content)
 - `blog-archive`: Archive/listing functionality
-- `blog-theme-switch`: Theme toggle functionality
+- `blog-theme-toggle`: Theme toggle functionality
+- `blog-tags`: Tag management and display
+- `entry-navigation`: Navigation between blog entries
 
 ### Content Management
 - **Blog Entries**: Stored as JavaScript modules in `/entries/` directory
 - **Entry Format**: Each entry exports a default object with `title`, `publishedDate`, `bodyText`, `tags`, etc.
-- **Dynamic Loading**: `BlogEntry.js` imports and renders entries dynamically
+- **Entry Manager**: `EntryManager.js` utility class handles entry loading and management
+- **Entry Index**: `entries/index.js` provides centralized entry imports
+- **Dynamic Loading**: `BlogEntry.js` imports and renders entries based on URL
 
 ### Theme System
 - **Theme Utility**: `/utils/Theme.js` manages light/dark theme persistence via localStorage
 - **Theme Constants**: `/constants/themes.js` defines available themes
-- **Theme Icons**: SVG icons stored as JavaScript modules in `/icons/`
+- **Theme Icons**: SVG icons stored as JavaScript modules in `/icons/` (sun, moon, pencil line)
 
 ### File Organization
 ```
 components/     - Web Component definitions
-entries/        - Blog post content as JS modules  
-utils/          - Utility classes (Theme management)
-constants/      - Shared constants
+entries/        - Blog post content as JS modules + index
+utils/          - Utility classes (Theme, EntryManager)
+constants/      - Shared constants (themes)
 icons/          - SVG icons as JS modules
+archive.html    - Archive page template
+index.html      - Main application entry point
+global.css      - Global styles
 ```
 
 The application uses ES modules with static imports. New blog entries should follow the existing format in `/entries/` and be imported into the appropriate component.
