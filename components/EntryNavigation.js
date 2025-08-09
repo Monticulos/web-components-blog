@@ -47,7 +47,7 @@ export class EntryNavigation extends HTMLElement {
     async renderPreviousLink() {
         const slug = await EntryManager.getPreviousEntrySlug(this.#current)
         if (slug) {
-            return `<a href="#${slug}">Forrige innlegg</a>`
+            return `<a href="./#${slug}">Forrige innlegg</a>`
         }
         return "";
     }
@@ -55,7 +55,7 @@ export class EntryNavigation extends HTMLElement {
     async renderNextLink() {
         const slug = await EntryManager.getNextEntrySlug(this.#current)
         if (slug) {
-            return `<a href="#${slug}">Neste innlegg</a>`
+            return `<a href="./#${slug}">Neste innlegg</a>`
         }
         return "";
     }

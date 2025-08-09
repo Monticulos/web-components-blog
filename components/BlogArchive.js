@@ -38,7 +38,7 @@ export class BlogArchive extends HTMLElement {
     renderEntries(entries) {
         return entries.map((entry) => `
             <li>
-                <a href="/#${entry.slugs[0]}">
+                <a href="./#${entry.slugs[0]}">
                     <div class="entry-title">
                         ${entry.title}
                     </div>
