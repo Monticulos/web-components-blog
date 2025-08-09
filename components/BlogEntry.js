@@ -38,7 +38,6 @@ export class BlogEntry extends HTMLElement {
         this.renderEntry(entry);
     }
 
-
     renderEntry(entry) {
         this.shadowRoot.innerHTML = `
             <link rel="stylesheet" href="./global.css" />

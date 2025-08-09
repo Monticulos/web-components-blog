@@ -22,7 +22,7 @@ export class BlogTags extends HTMLElement {
                 }
             </style>
             <span class="tags">
-            ${this.#tags.map(tag => `${tag}`).join(', ')}
+            ${this.#tags.join(', ')}
             </span>
         `;
     }

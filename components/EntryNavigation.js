@@ -4,7 +4,7 @@ export class EntryNavigation extends HTMLElement {
     #current = "#current"
 
     set current(value) {
-        this.#current = `${value}`;
+        this.#current = value;
         if (this.shadowRoot) {
             this.renderNavigation();
         }
