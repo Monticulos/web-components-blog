@@ -4,43 +4,43 @@ import './EntryNavigation.js';
 
 export class BlogEntry extends HTMLElement {
     async connectedCallback() {
-        const shadow = this.attachShadow({ mode: "open" });
+        this.attachShadow({ mode: "open" });
 
-        await this.loadAndRenderEntry(shadow);
+        await this.loadAndRenderEntry();
         window.addEventListener('hashchange', () => this.handleRouteChange());
     }
 
     async handleRouteChange() {
-        await this.loadAndRenderEntry(this.shadowRoot);
+        await this.loadAndRenderEntry();
     }
 
-    async loadAndRenderEntry(shadow) {
+    async loadAndRenderEntry() {
         const slug = window.location.hash.slice(1);
         if (slug) {
-            this.renderEntryFromSlug(shadow, slug);
+            this.renderEntryFromSlug(slug);
         } else {
-            this.renderLatestEntry(shadow);
+            this.renderLatestEntry();
         }
     }
 
-    async renderEntryFromSlug(shadow, slug) {
+    async renderEntryFromSlug(slug) {
         try {
             const entry = await EntryManager.getEntry(slug);
-            this.renderEntry(shadow, entry);
+            this.renderEntry(entry);
         } catch (error) {
-            await this.renderError(shadow);
+            await this.renderError();
         }
     }
 
-    async renderLatestEntry(shadow) {
+    async renderLatestEntry() {
         const latestSlug = await EntryManager.getLatestEntrySlug();
         const entry = await EntryManager.getEntry(latestSlug);
-        this.renderEntry(shadow, entry);
+        this.renderEntry(entry);
     }
 
 
-    renderEntry(shadow, entry) {
-        shadow.innerHTML = `
+    renderEntry(entry) {
+        this.shadowRoot.innerHTML = `
             <link rel="stylesheet" href="./global.css" />
             <style>
                 .metadata {
@@ -58,19 +58,19 @@ export class BlogEntry extends HTMLElement {
                 <div>${entry.bodyText}</div>
             </main>
         `;
-        
+
         const blogTags = document.createElement("blog-tags");
         blogTags.tags = entry.tags;
-        shadow.querySelector('.metadata').appendChild(blogTags);
+        this.shadowRoot.querySelector('.metadata').appendChild(blogTags);
 
         const entryNavigation = document.createElement("entry-navigation");
         entryNavigation.current = entry.slugs[0];
-        shadow.querySelector('main').appendChild(entryNavigation);
+        this.shadowRoot.querySelector('main').appendChild(entryNavigation);
     }
 
-    async renderError(shadow) {
+    async renderError() {
         const latestSlug = await EntryManager.getLatestEntrySlug();
-        shadow.innerHTML = `
+        this.shadowRoot.innerHTML = `
             <link rel="stylesheet" href="./global.css" />
             <main>
                 <h1>Innlegg ikke funnet</h1>
