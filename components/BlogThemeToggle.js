@@ -65,3 +65,5 @@ export class BlogThemeToggle extends HTMLElement {
         document.body.classList.toggle(themes.dark, !isLight);
     }
 }
+
+customElements.define("blog-theme-switch", BlogThemeToggle);

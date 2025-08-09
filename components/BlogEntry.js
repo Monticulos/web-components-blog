@@ -74,3 +74,5 @@ export class BlogEntry extends HTMLElement {
         `;
     }
 }
+
+customElements.define("blog-entry", BlogEntry);

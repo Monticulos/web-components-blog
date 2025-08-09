@@ -1,4 +1,5 @@
 import { pencilLineIcon } from "../icons/pencilLineIcon.js";
+import { BlogThemeToggle } from "./BlogThemeToggle.js";
 
 export class BlogHeader extends HTMLElement {
     connectedCallback() {
@@ -47,3 +48,5 @@ export class BlogHeader extends HTMLElement {
         `;
     }
 }
+
+customElements.define("blog-header", BlogHeader);
