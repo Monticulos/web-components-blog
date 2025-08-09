@@ -2,6 +2,7 @@ import { entryFileNames } from '../entries/index.js';
 
 export class EntryManager {
     static slugToFilenameMap = new Map();
+    static filenameToFirstSlugMap = new Map();
     static isSlugMapBuilt = false;
 
     static async loadEntryModule(filename) {
@@ -24,6 +25,32 @@ export class EntryManager {
         return entry.slugs[0];
     }
 
+    static async getPreviousEntrySlug(currentEntrySlug) {
+        await this.buildSlugMap();
+        
+        const currentFilename = this.slugToFilenameMap.get(currentEntrySlug);
+        if (!currentFilename) return null;
+        
+        const currentIndex = entryFileNames.indexOf(currentFilename);
+        if (currentIndex === -1 || currentIndex === entryFileNames.length - 1) return null;
+        
+        const previousFilename = entryFileNames[currentIndex + 1];
+        return this.filenameToFirstSlugMap.get(previousFilename);
+    }
+
+    static async getNextEntrySlug(currentEntrySlug) {
+        await this.buildSlugMap();
+        
+        const currentFilename = this.slugToFilenameMap.get(currentEntrySlug);
+        if (!currentFilename) return null;
+        
+        const currentIndex = entryFileNames.indexOf(currentFilename);
+        if (currentIndex === -1 || currentIndex === 0) return null;
+        
+        const nextFilename = entryFileNames[currentIndex - 1];
+        return this.filenameToFirstSlugMap.get(nextFilename);
+    }
+
     static async getFilenameFromSlug(slug) {
         await this.buildSlugMap();
         return this.slugToFilenameMap.get(slug);
@@ -44,6 +71,7 @@ export class EntryManager {
             const entry = await this.loadEntryModule(filename);
             if (this.hasValidSlugs(entry)) {
                 this.mapSlugsToFilename(entry.slugs, filename);
+                this.filenameToFirstSlugMap.set(filename, entry.slugs[0]);
             }
         } catch (error) {
             console.error(`Failed to load entry ${filename}:`, error);

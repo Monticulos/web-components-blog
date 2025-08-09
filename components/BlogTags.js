@@ -4,16 +4,16 @@ export class BlogTags extends HTMLElement {
     set tags(value) {
         this.#tags = value || [];
         if (this.shadowRoot) {
-            this.render();
+            this.renderTags();
         }
     }
 
     connectedCallback() {
-        const shadow = this.attachShadow({ mode: "open" });
-        this.render();
+        this.attachShadow({ mode: "open" });
+        this.renderTags();
     }
 
-    render() {
+    renderTags() {
         this.shadowRoot.innerHTML = `
             <link rel="stylesheet" href="/global.css" />
             <style>

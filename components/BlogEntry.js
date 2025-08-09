@@ -1,5 +1,6 @@
 import { EntryManager } from '../utils/EntryManager.js';
-import { BlogTags } from './BlogTags.js';
+import './BlogTags.js';
+import './EntryNavigation.js';
 
 export class BlogEntry extends HTMLElement {
     async connectedCallback() {
@@ -58,9 +59,13 @@ export class BlogEntry extends HTMLElement {
             </main>
         `;
         
-        const blogTags = document.createElement('blog-tags');
+        const blogTags = document.createElement("blog-tags");
         blogTags.tags = entry.tags;
         shadow.querySelector('.metadata').appendChild(blogTags);
+
+        const entryNavigation = document.createElement("entry-navigation");
+        entryNavigation.current = entry.slugs[0];
+        shadow.querySelector('main').appendChild(entryNavigation);
     }
 
     async renderError(shadow) {

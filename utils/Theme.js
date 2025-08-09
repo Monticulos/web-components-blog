@@ -17,6 +17,6 @@ export class Theme {
 
     static isLight() {
         const currentTheme = Theme.get();
-        return currentTheme === themes.light
+        return currentTheme === themes.light;
     }
 }

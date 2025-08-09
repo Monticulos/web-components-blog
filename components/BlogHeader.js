@@ -1,5 +1,5 @@
 import { pencilLineIcon } from "../icons/pencilLineIcon.js";
-import { BlogThemeToggle } from "./BlogThemeToggle.js";
+import "./BlogThemeToggle.js";
 
 export class BlogHeader extends HTMLElement {
     connectedCallback() {
