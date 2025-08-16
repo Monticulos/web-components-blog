@@ -1,4 +1,6 @@
-export class BlogTags extends HTMLElement {
+import { BaseComponent } from "./BaseComponent.js";
+
+export class BlogTags extends BaseComponent {
     #tags = [];
 
     set tags(value) {
@@ -9,13 +11,12 @@ export class BlogTags extends HTMLElement {
     }
 
     connectedCallback() {
-        this.attachShadow({ mode: "open" });
         this.renderTags();
     }
 
     renderTags() {
         this.shadowRoot.innerHTML = `
-            <link rel="stylesheet" href="./global.css" />
+            ${this.addGlobalStyles()}
             <style>
                 .tags {
                     font-style: italic;

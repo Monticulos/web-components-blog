@@ -2,12 +2,9 @@ import { sunIcon } from "../icons/sunIcon.js";
 import { moonIcon } from "../icons/moonIcon.js";
 import { Theme } from "../utils/Theme.js";
 import { themes } from "../constants/themes.js";
+import { BaseComponent } from "./BaseComponent.js";
 
-export class BlogThemeToggle extends HTMLElement {
-    constructor() {
-        super();
-        this.attachShadow({ mode: "open" });
-    }
+export class BlogThemeToggle extends BaseComponent {
 
     connectedCallback() {
         Theme.updateClassList();
@@ -18,7 +15,7 @@ export class BlogThemeToggle extends HTMLElement {
 
     renderButton() {
         this.shadowRoot.innerHTML = `
-        <link rel="stylesheet" href="./global.css" />
+        ${this.addGlobalStyles()}
         <style>
             button {
                 display: flex;

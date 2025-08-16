@@ -1,8 +1,8 @@
 import { EntryManager } from "../utils/EntryManager.js"
+import { BaseComponent } from "./BaseComponent.js";
 
-export class BlogArchive extends HTMLElement {
+export class BlogArchive extends BaseComponent {
     async connectedCallback() {
-        this.attachShadow({ mode: "open" });
         this.renderArchive();
     }
 
@@ -10,7 +10,7 @@ export class BlogArchive extends HTMLElement {
         const entries = await EntryManager.getEntriesAsArray();
 
         this.shadowRoot.innerHTML = `
-        <link rel="stylesheet" href="./global.css" />
+        ${this.addGlobalStyles()}
         <style>
             h1 {
                 margin-bottom: 1rem;

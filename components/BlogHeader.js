@@ -1,12 +1,11 @@
 import { pencilLineIcon } from "../icons/pencilLineIcon.js";
 import "./BlogThemeToggle.js";
+import { BaseComponent } from "./BaseComponent.js";
 
-export class BlogHeader extends HTMLElement {
+export class BlogHeader extends BaseComponent {
     connectedCallback() {
-        const shadow = this.attachShadow({ mode: "open" });
-
-        shadow.innerHTML = `
-        <link rel="stylesheet" href="./global.css" />
+        this.shadowRoot.innerHTML = `
+        ${this.addGlobalStyles()}
         <style>
             header {
                 display: flex;

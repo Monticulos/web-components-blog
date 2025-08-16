@@ -1,6 +1,7 @@
 import { EntryManager } from "../utils/EntryManager.js";
+import { BaseComponent } from "./BaseComponent.js";
 
-export class EntryNavigation extends HTMLElement {
+export class EntryNavigation extends BaseComponent {
     #current = "#current"
 
     set current(value) {
@@ -11,13 +12,12 @@ export class EntryNavigation extends HTMLElement {
     }
 
     connectedCallback() {
-        this.attachShadow({ mode: "open" });
         this.renderNavigation();
     }
 
     async renderNavigation() {
         this.shadowRoot.innerHTML = `
-            <link rel="stylesheet" href="./global.css" />
+            ${this.addGlobalStyles()}
             <style>
                 nav {
                     margin-top: 2rem;

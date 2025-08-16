@@ -1,10 +1,10 @@
 import { EntryManager } from '../utils/EntryManager.js';
 import './BlogTags.js';
 import './EntryNavigation.js';
+import { BaseComponent } from './BaseComponent.js';
 
-export class BlogEntry extends HTMLElement {
+export class BlogEntry extends BaseComponent {
     async connectedCallback() {
-        this.attachShadow({ mode: "open" });
 
         await this.loadAndRenderEntry();
         window.addEventListener('hashchange', () => this.handleRouteChange());
@@ -40,7 +40,7 @@ export class BlogEntry extends HTMLElement {
 
     renderEntry(entry) {
         this.shadowRoot.innerHTML = `
-            <link rel="stylesheet" href="./global.css" />
+            ${this.addGlobalStyles()}
             <style>
                 h1, h2, h3, h4, h5, h6 {
                     line-height: 150%;
@@ -114,12 +114,12 @@ export class BlogEntry extends HTMLElement {
     async renderNotFound() {
         const latestSlug = await EntryManager.getLatestEntrySlug();
         this.shadowRoot.innerHTML = `
+            ${this.addGlobalStyles()}
             <style>
             h1 {
                 line-height: 150%;
             }
             </style>
-            <link rel="stylesheet" href="./global.css" />
             <main>
                 <h1>Innlegg ikke funnet</h1>
                 <p><a href="#${latestSlug}">Gå til siste innlegg</a></p>
