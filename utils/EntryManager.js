@@ -15,6 +15,11 @@ export class EntryManager {
         return await this.loadEntryModule(filename);
     }
 
+    static async getLatestEntry() {
+        const latestSlug = await EntryManager.getLatestEntrySlug();
+        return EntryManager.getEntry(latestSlug);
+    }
+
     static async getEntriesAsArray() {
         return Promise.all(entryFileNames.map(this.loadEntryModule))
     }

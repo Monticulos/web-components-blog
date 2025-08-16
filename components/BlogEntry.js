@@ -7,11 +7,7 @@ export class BlogEntry extends BaseComponent {
     async connectedCallback() {
 
         await this.loadAndRenderEntry();
-        window.addEventListener('hashchange', () => this.handleRouteChange());
-    }
-
-    async handleRouteChange() {
-        await this.loadAndRenderEntry();
+        window.addEventListener('hashchange', () => this.loadAndRenderEntry());
     }
 
     async loadAndRenderEntry() {
@@ -33,8 +29,7 @@ export class BlogEntry extends BaseComponent {
     }
 
     async renderLatestEntry() {
-        const latestSlug = await EntryManager.getLatestEntrySlug();
-        const entry = await EntryManager.getEntry(latestSlug);
+        const entry = await EntryManager.getLatestEntry();
         this.renderEntry(entry);
     }
 
