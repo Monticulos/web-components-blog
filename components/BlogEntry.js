@@ -39,40 +39,40 @@ export class BlogEntry extends BaseComponent {
     }
 
     renderEntry(entry) {
-        this.shadowRoot.innerHTML = `
-            ${this.addGlobalStyles()}
-            <style>
-                h1, h2, h3, h4, h5, h6 {
-                    line-height: 150%;
-                }
+        const styles = `
+            h1, h2, h3, h4, h5, h6 {
+                line-height: 150%;
+            }
 
-                p {
-                    margin-bottom: 1rem;
-                    line-height: 150%;
-                }
+            p {
+                margin-bottom: 1rem;
+                line-height: 150%;
+            }
 
-                ul {
-                    margin-bottom: 1rem;
-                }
+            ul {
+                margin-bottom: 1rem;
+            }
 
-                li {
-                    line-height: 150%;
-                }
+            li {
+                line-height: 150%;
+            }
 
-                ul > li {
-                    margin-inline-start: 1rem;
-                }
+            ul > li {
+                margin-inline-start: 1rem;
+            }
 
-                ol > li {
-                    margin-inline-start: 1.25rem;
-                }
-
-                .metadata {
-                    display: flex;
-                    align-items: baseline;
-                    gap: 0.5rem;
-                }
-            </style>
+            ol > li {
+                margin-inline-start: 1.25rem;
+            }
+            
+            .metadata {
+                display: flex;
+                align-items: baseline;
+                gap: 0.5rem;
+            }
+        `;
+        
+        const html = `
             <main>
                 <h1>${entry.title}</h1>
                 <span class="metadata">
@@ -83,6 +83,8 @@ export class BlogEntry extends BaseComponent {
                 ${this.renderSources(entry.sources)}
             </main>
         `;
+        
+        this.shadowRoot.innerHTML = this.createTemplate(html, styles);
 
         const blogTags = document.createElement("blog-tags");
         blogTags.tags = entry.tags;
@@ -113,18 +115,21 @@ export class BlogEntry extends BaseComponent {
 
     async renderNotFound() {
         const latestSlug = await EntryManager.getLatestEntrySlug();
-        this.shadowRoot.innerHTML = `
-            ${this.addGlobalStyles()}
-            <style>
+        
+        const styles = `
             h1 {
                 line-height: 150%;
             }
-            </style>
+        `;
+
+        const html = `
             <main>
                 <h1>Innlegg ikke funnet</h1>
                 <p><a href="#${latestSlug}">Gå til siste innlegg</a></p>
             </main>
         `;
+        
+        this.shadowRoot.innerHTML = this.createTemplate(html, styles);
     }
 }
 

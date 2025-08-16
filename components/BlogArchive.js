@@ -9,9 +9,7 @@ export class BlogArchive extends BaseComponent {
     async renderArchive() {
         const entries = await EntryManager.getEntriesAsArray();
 
-        this.shadowRoot.innerHTML = `
-        ${this.addGlobalStyles()}
-        <style>
+        const styles = `
             h1 {
                 margin-bottom: 1rem;
             }
@@ -30,18 +28,18 @@ export class BlogArchive extends BaseComponent {
             li {
                 margin-bottom: 1rem;
             }
-
-            .entry-title {
-                font-weight: bold;
-            }
-        </style>
-        <main>
-            <h1>Arkiv</h1>
-            <ul>
-                ${this.renderEntries(entries)}
-            </ul>
-        </main>
         `;
+        
+        const html = `
+            <main>
+                <h1>Arkiv</h1>
+                <ul>
+                    ${this.renderEntries(entries)}
+                </ul>
+            </main>
+        `;
+        
+        this.shadowRoot.innerHTML = this.createTemplate(html, styles);
     }
 
     renderEntries(entries) {

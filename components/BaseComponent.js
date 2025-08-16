@@ -4,7 +4,11 @@ export class BaseComponent extends HTMLElement {
         this.attachShadow({ mode: "open" });
     }
     
-    addGlobalStyles() {
-        return `<link rel="stylesheet" href="./global.css" />`;
+    createTemplate(html, styles = undefined) {
+        return `
+            <link rel="stylesheet" href="./global.css" />
+            ${styles ? `<style>${styles}</style>` : ''}
+            ${html}
+        `;
     }
 }

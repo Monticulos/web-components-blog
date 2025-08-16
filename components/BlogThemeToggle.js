@@ -14,9 +14,7 @@ export class BlogThemeToggle extends BaseComponent {
     }
 
     renderButton() {
-        this.shadowRoot.innerHTML = `
-        ${this.addGlobalStyles()}
-        <style>
+        const styles = `
             button {
                 display: flex;
                 align-items: center;
@@ -34,10 +32,11 @@ export class BlogThemeToggle extends BaseComponent {
                 background-color: var(--hover-color);
                 cursor: pointer;
             }
-        </style>
-        <button aria-label="Bytt tema">
-        </button>
         `;
+        
+        const html = `<button aria-label="Bytt tema"></button>`;
+        
+        this.shadowRoot.innerHTML = this.createTemplate(html, styles);
     }
 
     renderIcon() {

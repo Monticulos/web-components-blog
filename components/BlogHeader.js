@@ -4,9 +4,7 @@ import { BaseComponent } from "./BaseComponent.js";
 
 export class BlogHeader extends BaseComponent {
     connectedCallback() {
-        this.shadowRoot.innerHTML = `
-        ${this.addGlobalStyles()}
-        <style>
+        const styles = `
             header {
                 display: flex;
                 align-items: center;
@@ -35,18 +33,21 @@ export class BlogHeader extends BaseComponent {
                 gap: 1rem;
                 font-weight: 500;
             }
-        </style>
-        
-        <header>
-            <h1>
-                <a class="heading-link" href="./index.html">Bloggen ${pencilLineIcon}</a>
-            </h1>
-            <div class="action-bar">
-                <a href="./archive.html">Arkiv</a>
-                <blog-theme-switch></blog-theme-switch>
-            </div>
-        </header>
         `;
+        
+        const html = `
+            <header>
+                <h1>
+                    <a class="heading-link" href="./index.html">Bloggen ${pencilLineIcon}</a>
+                </h1>
+                <div class="action-bar">
+                    <a href="./archive.html">Arkiv</a>
+                    <blog-theme-switch></blog-theme-switch>
+                </div>
+            </header>
+        `;
+        
+        this.shadowRoot.innerHTML = this.createTemplate(html, styles);
     }
 }
 

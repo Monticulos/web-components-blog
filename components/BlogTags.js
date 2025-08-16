@@ -15,17 +15,19 @@ export class BlogTags extends BaseComponent {
     }
 
     renderTags() {
-        this.shadowRoot.innerHTML = `
-            ${this.addGlobalStyles()}
-            <style>
-                .tags {
-                    font-style: italic;
-                }
-            </style>
+        const styles = `
+            .tags {
+                font-style: italic;
+            }
+        `;
+        
+        const html = `
             <span class="tags">
-            ${this.#tags.join(', ')}
+                ${this.#tags.join(', ')}
             </span>
         `;
+        
+        this.shadowRoot.innerHTML = this.createTemplate(html, styles);
     }
 }
 
