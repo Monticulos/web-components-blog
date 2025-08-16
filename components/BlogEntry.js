@@ -5,7 +5,6 @@ import { BaseComponent } from './BaseComponent.js';
 
 export class BlogEntry extends BaseComponent {
     async connectedCallback() {
-
         await this.loadAndRenderEntry();
         window.addEventListener('hashchange', () => this.loadAndRenderEntry());
     }
@@ -66,28 +65,24 @@ export class BlogEntry extends BaseComponent {
                 gap: 0.5rem;
             }
         `;
-        
+
         const html = `
             <main>
                 <h1>${entry.title}</h1>
                 <span class="metadata">
                     <p>${entry.publishedDate}</p> 
                     <span>|</span>
+                    <blog-tags></blog-tags>
                 </span>
                 <div>${entry.bodyText}</div>
-                ${this.renderSources(entry.sources)}
+                    ${this.renderSources(entry.sources)}
+                <entry-navigation></entry-navigation>
             </main>
         `;
-        
+
         this.shadowRoot.innerHTML = this.createTemplate(html, styles);
-
-        const blogTags = document.createElement("blog-tags");
-        blogTags.tags = entry.tags;
-        this.shadowRoot.querySelector('.metadata').appendChild(blogTags);
-
-        const entryNavigation = document.createElement("entry-navigation");
-        entryNavigation.current = entry.slugs[0];
-        this.shadowRoot.querySelector('main').appendChild(entryNavigation);
+        this.shadowRoot.querySelector('blog-tags').tags = entry.tags;
+        this.shadowRoot.querySelector('entry-navigation').current = entry.slugs[0];
     }
 
     renderSources(sources) {
@@ -95,8 +90,8 @@ export class BlogEntry extends BaseComponent {
 
         const generateListItems = () => {
             return Array.from(sources.entries())
-            .map(([key, value]) => `<li><a href="${value}" target="_blank">${key}</a></li>`)
-            .join('')
+                .map(([key, value]) => `<li><a href="${value}" target="_blank">${key}</a></li>`)
+                .join('')
         }
 
         return `
@@ -110,7 +105,7 @@ export class BlogEntry extends BaseComponent {
 
     async renderNotFound() {
         const latestSlug = await EntryManager.getLatestEntrySlug();
-        
+
         const styles = `
             h1 {
                 line-height: 150%;
@@ -123,7 +118,7 @@ export class BlogEntry extends BaseComponent {
                 <p><a href="#${latestSlug}">Gå til siste innlegg</a></p>
             </main>
         `;
-        
+
         this.shadowRoot.innerHTML = this.createTemplate(html, styles);
     }
 }
