@@ -40,7 +40,15 @@ This is a blog application built with **Web Components** using vanilla JavaScrip
 
 ### File Organization
 ```
-components/     - Web Component definitions
+components/     - Web Component definitions (organized in directories)
+├── BlogArchive/        - BlogArchive.js + BlogArchiveStyles.js
+├── BlogEntry/          - BlogEntry.js + BlogEntryStyles.js  
+├── BlogHeader/         - BlogHeader.js + BlogHeaderStyles.js
+├── BlogTags/           - BlogTags.js + BlogTagsStyles.js
+├── BlogThemeToggle/    - BlogThemeToggle.js + BlogThemeToggleStyles.js
+├── EntryNavigation/    - EntryNavigation.js + EntryNavigationStyles.js
+└── BaseComponent.js    - Base class for all components
+
 entries/        - Blog post content as JS modules + index
 utils/          - Utility classes (Theme, EntryManager)
 constants/      - Shared constants (themes)
@@ -50,12 +58,17 @@ index.html      - Main application entry point
 global.css      - Global styles
 ```
 
+### Component Architecture
+- **Directory Structure**: Each component has its own directory containing the main component file and a separate styles file
+- **Style Separation**: Styles are extracted to `ComponentNameStyles.js` files that export template literals
+- **Import Pattern**: Components import styles with `import { styles } from './ComponentNameStyles.js'`
+
 The application uses ES modules with static imports. New blog entries should follow the existing format in `/entries/` and be imported into the appropriate component.
 
 ## Code Style
 
 When writing or refactoring components:
 - Follow the single responsibility principle
+- Follow the DRY principle
 - All text shown to the user should be in Norwegian
-- Follow the DRY (Do not Repeat Yourself) principle
-- Keep functions short
+- Keep functions/methods short

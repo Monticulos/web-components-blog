@@ -1,4 +1,5 @@
-import { BaseComponent } from "./BaseComponent.js";
+import { BaseComponent } from "../BaseComponent.js";
+import { styles } from "./BlogTagsStyles.js";
 
 export class BlogTags extends BaseComponent {
     #tags = [];
@@ -15,12 +16,6 @@ export class BlogTags extends BaseComponent {
     }
 
     renderTags() {
-        const styles = `
-            .tags {
-                font-style: italic;
-            }
-        `;
-        
         const html = `
             <span class="tags">
                 ${this.#tags.join(', ')}

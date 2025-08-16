@@ -1,5 +1,6 @@
-import { EntryManager } from "../utils/EntryManager.js";
-import { BaseComponent } from "./BaseComponent.js";
+import { EntryManager } from "../../utils/EntryManager.js";
+import { BaseComponent } from "../BaseComponent.js";
+import { styles } from "./EntryNavigationStyles.js"
 
 export class EntryNavigation extends BaseComponent {
     #current = "#current"
@@ -16,36 +17,13 @@ export class EntryNavigation extends BaseComponent {
     }
 
     async renderNavigation() {
-        const styles = `
-            nav {
-                margin-top: 2rem;
-                border-top: 1px solid var(--border-color);
-                padding-top: 1rem;
-                text-align: center;
-            }
-
-            a {
-                font-style: italic;
-                font-size: 85%;
-            }
-
-            a:after {
-                content: "|";
-                padding-inline: 0.5rem;
-            }
-            
-            a:last-child:after {
-                content: "";
-            }
-        `;
-        
         const html = `
             <nav>
                 ${await this.renderPreviousLink()}
                 ${await this.renderNextLink()}
             </nav>
         `;
-        
+
         this.shadowRoot.innerHTML = this.createTemplate(html, styles);
     }
 

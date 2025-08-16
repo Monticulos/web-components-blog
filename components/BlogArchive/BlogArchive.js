@@ -1,5 +1,6 @@
-import { EntryManager } from "../utils/EntryManager.js"
-import { BaseComponent } from "./BaseComponent.js";
+import { EntryManager } from "../../utils/EntryManager.js"
+import { BaseComponent } from "../BaseComponent.js";
+import { styles } from "./BlogArchiveStyles.js";
 
 export class BlogArchive extends BaseComponent {
     async connectedCallback() {
@@ -8,27 +9,6 @@ export class BlogArchive extends BaseComponent {
 
     async renderArchive() {
         const entries = await EntryManager.getEntriesAsArray();
-
-        const styles = `
-            h1 {
-                margin-bottom: 1rem;
-            }
-
-            h2 {
-                font-size: 1rem;
-                line-height: 150%;
-            }
-
-            ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-            }
-
-            li {
-                margin-bottom: 1rem;
-            }
-        `;
         
         const html = `
             <main>

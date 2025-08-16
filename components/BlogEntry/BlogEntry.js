@@ -1,7 +1,8 @@
-import { EntryManager } from '../utils/EntryManager.js';
-import './BlogTags.js';
-import './EntryNavigation.js';
-import { BaseComponent } from './BaseComponent.js';
+import { EntryManager } from '../../utils/EntryManager.js';
+import '../BlogTags/BlogTags.js';
+import '../EntryNavigation/EntryNavigation.js';
+import { BaseComponent } from '../BaseComponent.js';
+import { styles } from './BlogEntryStyles.js';
 
 export class BlogEntry extends BaseComponent {
     async connectedCallback() {
@@ -33,39 +34,6 @@ export class BlogEntry extends BaseComponent {
     }
 
     renderEntry(entry) {
-        const styles = `
-            h1, h2, h3, h4, h5, h6 {
-                line-height: 150%;
-            }
-
-            p {
-                margin-bottom: 1rem;
-                line-height: 150%;
-            }
-
-            ul {
-                margin-bottom: 1rem;
-            }
-
-            li {
-                line-height: 150%;
-            }
-
-            ul > li {
-                margin-inline-start: 1rem;
-            }
-
-            ol > li {
-                margin-inline-start: 1.25rem;
-            }
-            
-            .metadata {
-                display: flex;
-                align-items: baseline;
-                gap: 0.5rem;
-            }
-        `;
-
         const html = `
             <main>
                 <h1>${entry.title}</h1>
@@ -105,12 +73,6 @@ export class BlogEntry extends BaseComponent {
 
     async renderNotFound() {
         const latestSlug = await EntryManager.getLatestEntrySlug();
-
-        const styles = `
-            h1 {
-                line-height: 150%;
-            }
-        `;
 
         const html = `
             <main>
