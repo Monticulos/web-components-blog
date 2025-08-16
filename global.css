@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+:root{
+    --main-vertical-spacing: 5%;
+    --main-horizontal-spacing: 5%;
+    --main-width: 75ch;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -37,9 +43,9 @@ body.dark {
 }
 
 main {
-    max-width: 75ch;
-    padding-inline: 5%;
-    padding-block: 5%;
+    max-width: var(--main-width);
+    padding-inline: var(--main-horizontal-spacing);
+    padding-block: var(--main-vertical-spacing);
     margin-inline: auto;
 }
 

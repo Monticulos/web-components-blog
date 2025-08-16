@@ -20,12 +20,15 @@ export class EntryNavigation extends HTMLElement {
             <link rel="stylesheet" href="./global.css" />
             <style>
                 nav {
-                    margin-top: 50%;
+                    margin-top: 2rem;
+                    border-top: 1px solid var(--border-color);
+                    padding-top: 1rem;
                     text-align: center;
                 }
 
                 a {
-                    font-size: 90%;
+                    font-style: italic;
+                    font-size: 85%;
                 }
 
                 a:after {

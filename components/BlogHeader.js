@@ -34,6 +34,7 @@ export class BlogHeader extends HTMLElement {
                 display: flex;
                 align-items: center;
                 gap: 1rem;
+                font-weight: 500;
             }
         </style>
         
