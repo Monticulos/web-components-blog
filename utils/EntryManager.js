@@ -6,7 +6,7 @@ export class EntryManager {
     static isSlugMapBuilt = false;
 
     static async loadEntryModule(filename) {
-        const entryModule = await import(`../entries/${filename}.js`);
+        const entryModule = await import(`../entries/${filename}`);
         return entryModule.default;
     }
 
