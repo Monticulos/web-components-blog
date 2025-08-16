@@ -14,5 +14,6 @@ export default {
     lastUpdatedTime: "",
     slugs: ["velkommen-til-bloggen", "velkommen"],
     tags: ["Bloggen", "Programmering"],
-    bodyText
+    bodyText,
+    sources: null
 }

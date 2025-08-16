@@ -56,8 +56,15 @@ export class BlogEntry extends HTMLElement {
                 }
 
                 li {
-                    margin-inline-start: 1rem;
                     line-height: 150%;
+                }
+
+                ul > li {
+                    margin-inline-start: 1rem;
+                }
+
+                ol > li {
+                    margin-inline-start: 1.25rem;
                 }
 
                 .metadata {
@@ -73,6 +80,7 @@ export class BlogEntry extends HTMLElement {
                     <span>|</span>
                 </span>
                 <div>${entry.bodyText}</div>
+                ${this.renderSources(entry.sources)}
             </main>
         `;
 
@@ -83,6 +91,24 @@ export class BlogEntry extends HTMLElement {
         const entryNavigation = document.createElement("entry-navigation");
         entryNavigation.current = entry.slugs[0];
         this.shadowRoot.querySelector('main').appendChild(entryNavigation);
+    }
+
+    renderSources(sources) {
+        if (!sources) return ``;
+
+        const generateListItems = () => {
+            return Array.from(sources.entries())
+            .map(([key, value]) => `<li><a href="${value}" target="_blank">${key}</a></li>`)
+            .join('')
+        }
+
+        return `
+            <h2>Kilder</h2>
+            <ol>
+                ${generateListItems()}
+            </ol>
+
+        `
     }
 
     async renderNotFound() {
