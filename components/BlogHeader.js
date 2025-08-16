@@ -19,7 +19,8 @@ export class BlogHeader extends HTMLElement {
 
             h1 {
                 margin-bottom: 0;
-                
+                font-size: 1.5rem;
+                font-weight: 500;
             }
 
             .heading-link {

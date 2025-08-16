@@ -28,7 +28,7 @@ export class BlogEntry extends HTMLElement {
             const entry = await EntryManager.getEntry(slug);
             this.renderEntry(entry);
         } catch (error) {
-            await this.renderError();
+            await this.renderNotFound();
         }
     }
 
@@ -42,6 +42,24 @@ export class BlogEntry extends HTMLElement {
         this.shadowRoot.innerHTML = `
             <link rel="stylesheet" href="./global.css" />
             <style>
+                h1, h2, h3, h4, h5, h6 {
+                    line-height: 150%;
+                }
+
+                p {
+                    margin-bottom: 1rem;
+                    line-height: 150%;
+                }
+
+                ul {
+                    margin-bottom: 1rem;
+                }
+
+                li {
+                    margin-inline-start: 1rem;
+                    line-height: 150%;
+                }
+
                 .metadata {
                     display: flex;
                     align-items: baseline;
@@ -67,9 +85,14 @@ export class BlogEntry extends HTMLElement {
         this.shadowRoot.querySelector('main').appendChild(entryNavigation);
     }
 
-    async renderError() {
+    async renderNotFound() {
         const latestSlug = await EntryManager.getLatestEntrySlug();
         this.shadowRoot.innerHTML = `
+            <style>
+            h1 {
+                line-height: 150%;
+            }
+            </style>
             <link rel="stylesheet" href="./global.css" />
             <main>
                 <h1>Innlegg ikke funnet</h1>

@@ -12,6 +12,15 @@ export class BlogArchive extends HTMLElement {
         this.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="./global.css" />
         <style>
+            h1 {
+                margin-bottom: 1rem;
+            }
+
+            h2 {
+                font-size: 1rem;
+                line-height: 150%;
+            }
+
             ul {
                 list-style-type: none;
                 margin: 0;
@@ -39,9 +48,9 @@ export class BlogArchive extends HTMLElement {
         return entries.map((entry) => `
             <li>
                 <a href="./#${entry.slugs[0]}">
-                    <div class="entry-title">
+                    <h2>
                         ${entry.title}
-                    </div>
+                    </h2>
                     ${entry.publishedDate}
                 </a>
             </li>

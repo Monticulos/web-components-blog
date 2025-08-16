@@ -49,12 +49,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-weight: 500;
-}
-
-h1 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-weight: 600;
 }
 
 a,
@@ -65,9 +60,4 @@ a:visited {
 
 a:hover {
     text-decoration: underline;
-}
-
-p {
-    margin-bottom: 1rem;
-    line-height: 150%;
 }
