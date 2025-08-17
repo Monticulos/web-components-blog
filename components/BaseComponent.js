@@ -5,7 +5,7 @@ export class BaseComponent extends HTMLElement {
     }
     
     createTemplate(html, styles = undefined) {
-        return `
+        return /*html*/`
             <link rel="stylesheet" href="./global.css" />
             ${styles ? `<style>${styles}</style>` : ''}
             ${html}

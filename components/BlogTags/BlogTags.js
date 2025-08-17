@@ -16,7 +16,7 @@ export class BlogTags extends BaseComponent {
     }
 
     renderTags() {
-        const html = `
+        const html = /*html*/`
             <span class="tags">
                 ${this.#tags.join(', ')}
             </span>

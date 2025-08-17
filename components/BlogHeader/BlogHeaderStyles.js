@@ -1,4 +1,4 @@
-export const styles = `
+export const styles = /*css*/`
     header {
         display: flex;
         align-items: center;

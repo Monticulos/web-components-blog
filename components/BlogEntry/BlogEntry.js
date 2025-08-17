@@ -34,7 +34,7 @@ export class BlogEntry extends BaseComponent {
     }
 
     renderEntry(entry) {
-        const html = `
+        const html = /*html*/`
             <main>
                 <h1>${entry.title}</h1>
                 <span class="metadata">
@@ -58,7 +58,7 @@ export class BlogEntry extends BaseComponent {
 
         const generateListItems = () => {
             return Object.entries(sources)
-                .map(([key, value]) => `<li><a href="${value}" target="_blank">${key}</a></li>`)
+                .map(([key, value]) => /*html*/`<li><a href="${value}" target="_blank">${key}</a></li>`)
                 .join('')
         }
 
@@ -73,7 +73,7 @@ export class BlogEntry extends BaseComponent {
     async renderNotFound() {
         const latestSlug = EntryRepository.getLatestEntrySlug();
 
-        const html = `
+        const html = /*html*/`
             <main>
                 <h1>Innlegg ikke funnet</h1>
                 <p><a href="#${latestSlug}">Gå til siste innlegg</a></p>

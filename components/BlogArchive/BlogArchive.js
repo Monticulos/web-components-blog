@@ -10,7 +10,7 @@ export class BlogArchive extends BaseComponent {
     async renderArchive() {
         const entries = EntryRepository.getEntriesReversed();
         
-        const html = `
+        const html = /*html*/`
             <main>
                 <h1>Arkiv</h1>
                 <ul>
@@ -23,7 +23,7 @@ export class BlogArchive extends BaseComponent {
     }
 
     renderEntries(entries) {
-        return entries.map((entry) => `
+        return entries.map((entry) => /*html*/`
             <li>
                 <a href="./#${entry.slugs[0]}">
                     <h2>
