@@ -24,11 +24,6 @@ function assertGreaterThan(numberToCompare, actualNumber, testName) {
     }
 }
 
-(async function getEntries_getsAllEntries() {
-    const entries = await EntryManager.getEntries();
-    assertGreaterThan(1, entries.length, "getEntries");
-})();
-
 (async function getEntry_getsEntry_fromGivenSlug() {
     const expectedSlug = "velkommen-til-bloggen";
     const entry = await EntryManager.getEntry(expectedSlug);

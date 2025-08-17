@@ -1,5 +1,23 @@
 export const entries = [
   {
+    "title": "Velkommen til bloggen",
+    "publishedDate": "9. august 2025",
+    "publishedTime": "07.04",
+    "lastUpdatedDate": "",
+    "lastUpdatedTime": "",
+    "slugs": [
+      "velkommen-til-bloggen",
+      "velkommen"
+    ],
+    "tags": [
+      "Bloggen",
+      "Programmering"
+    ],
+    "bodyText": "\n<p>Velkommen til Bloggen - et prosjekt laget med Web Components. Den har to sider, visning av blogginnlegg og arkivet. I fremtiden kommer jeg også til å lage en egen side med emner.</p>\n\n<p>Denne bloggen oppstod av flere årsaker. Jeg har en kollega som snakket om Web Components og sa at det hadde kommet ganske langt. Da ble jeg nysgjerrig på hva det var for noe, og hvordan det er å bruke i forhold til React. Jeg er også interessert i hva rammeverk som React gjør for oss, og da er det greit å se hvordan ting fungerer uten rammeverk. I tillegg hadde vi en episode på jobb, da en NPM-avhengighet ble flagget som ondsinnet kode og tatt ned midlertidig, som gjorde meg interessert i å prøve å bygge noe uten avhengigheter.</p>\n",
+    "sources": null,
+    "sourceFile": "2025-08-09.js"
+  },
+  {
     "title": "De tre klassiske overbevisningsformene",
     "publishedDate": "16. august 2025",
     "publishedTime": "12.46",
@@ -17,23 +35,7 @@ export const entries = [
       "Aristoteles (snl.no)": "https://snl.no/Aristoteles",
       "What Are Ethos, Pathos, & Logos? (thesaurus.com)": "https://www.thesaurus.com/e/writing/ethos-pathos-logos/",
       "Aristotle's Rhetoric (stanford.edu)": "https://plato.stanford.edu/entries/aristotle-rhetoric/#ThreMeanPers"
-    }
-  },
-  {
-    "title": "Velkommen til bloggen",
-    "publishedDate": "9. august 2025",
-    "publishedTime": "07.04",
-    "lastUpdatedDate": "",
-    "lastUpdatedTime": "",
-    "slugs": [
-      "velkommen-til-bloggen",
-      "velkommen"
-    ],
-    "tags": [
-      "Bloggen",
-      "Programmering"
-    ],
-    "bodyText": "\n<p>Velkommen til Bloggen - et prosjekt laget med Web Components. Den har to sider, visning av blogginnlegg og arkivet. I fremtiden kommer jeg også til å lage en egen side med emner.</p>\n\n<p>Denne bloggen oppstod av flere årsaker. Jeg har en kollega som snakket om Web Components og sa at det hadde kommet ganske langt. Da ble jeg nysgjerrig på hva det var for noe, og hvordan det er å bruke i forhold til React. Jeg er også interessert i hva rammeverk som React gjør for oss, og da er det greit å se hvordan ting fungerer uten rammeverk. I tillegg hadde vi en episode på jobb, da en NPM-avhengighet ble flagget som ondsinnet kode og tatt ned midlertidig, som gjorde meg interessert i å prøve å bygge noe uten avhengigheter.</p>\n",
-    "sources": null
+    },
+    "sourceFile": "2025-08-16.js"
   }
 ]

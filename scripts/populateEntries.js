@@ -3,12 +3,11 @@ import { FileUtils } from '../utils/FileUtils.js';
 
 const fileNames = fs.readdirSync("../entries");
 const entryFileNames = FileUtils.filterEntries(fileNames);
-const sortedEntryFileNames = entryFileNames.toReversed();
 
 const entries = await Promise.all(
-    sortedEntryFileNames.map(async fileName => {
+    entryFileNames.map(async fileName => {
         const entry = await import(`../entries/${fileName}`);
-        return entry.default;
+        return {...entry.default, sourceFile: fileName};
     })
 );
 
