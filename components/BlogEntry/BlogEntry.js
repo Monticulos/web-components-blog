@@ -21,7 +21,7 @@ export class BlogEntry extends BaseComponent {
 
     async renderEntryFromSlug(slug) {
         try {
-            const entry = await EntryRepository.getEntry(slug);
+            const entry = EntryRepository.getEntry(slug);
             this.renderEntry(entry);
         } catch (error) {
             await this.renderNotFound();
@@ -29,7 +29,7 @@ export class BlogEntry extends BaseComponent {
     }
 
     async renderLatestEntry() {
-        const entry = await EntryRepository.getLatestEntry();
+        const entry = EntryRepository.getLatestEntry();
         this.renderEntry(entry);
     }
 
@@ -71,7 +71,7 @@ export class BlogEntry extends BaseComponent {
     }
 
     async renderNotFound() {
-        const latestSlug = await EntryRepository.getLatestEntrySlug();
+        const latestSlug = EntryRepository.getLatestEntrySlug();
 
         const html = `
             <main>

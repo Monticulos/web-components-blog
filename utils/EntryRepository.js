@@ -1,24 +1,28 @@
 import { entries } from '../entries/index.js';
 
 export class EntryRepository {
-    static async getEntries() {
+    static getEntries() {
         return [...entries];
     }
 
-    static async getEntry(slug) {
+    static getEntriesReversed() {
+        return this.getEntries().reverse();
+    }
+
+    static getEntry(slug) {
         return entries.find((entry) => entry.slugs.includes(slug));
     }
 
-    static async getLatestEntry() {
+    static getLatestEntry() {
         return [...entries].pop();
     }
 
-    static async getLatestEntrySlug() {
-        const latestEntry = await this.getLatestEntry();
+    static getLatestEntrySlug() {
+        const latestEntry = this.getLatestEntry();
         return latestEntry.slugs[0];
     }
 
-    static async getPreviousEntrySlug(currentEntrySlug) {
+    static getPreviousEntrySlug(currentEntrySlug) {
         const currentIndex = entries.findIndex(entry => entry.slugs.includes(currentEntrySlug));
         const isSlugNotfound = currentIndex === -1;
         const isCurrentEntryOldest = currentIndex === 0;
@@ -27,7 +31,7 @@ export class EntryRepository {
         return entries[currentIndex - 1].slugs[0];
     }
 
-    static async getNextEntrySlug(currentEntrySlug) {
+    static getNextEntrySlug(currentEntrySlug) {
         const currentIndex = entries.findIndex(entry => entry.slugs.includes(currentEntrySlug));
         const isSlugNotfound = currentIndex === -1;
         const isCurrentEntryNewest = currentIndex === entries.length - 1;

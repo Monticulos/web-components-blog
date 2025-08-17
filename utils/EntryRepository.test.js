@@ -28,38 +28,38 @@ function assertGreaterThan(numberToCompare, actualNumber, testName) {
     }
 }
 
-(async function getEntries_getsAllEntries() {
-    const entries = await EntryRepository.getEntries();
+(function getEntries_getsAllEntries() {
+    const entries = EntryRepository.getEntries();
     assertGreaterThan(1, entries.length, "getEntries");
 })();
 
-(async function getEntry_getsEntry_fromGivenSlug() {
+(function getEntry_getsEntry_fromGivenSlug() {
     const expectedSlug = "velkommen-til-bloggen";
-    const entry = await EntryRepository.getEntry(expectedSlug);
+    const entry = EntryRepository.getEntry(expectedSlug);
     assertEqual(expectedSlug, entry.slugs[0], "getEntry")
 })();
 
-(async function getLatestEntry_getsLatestEntry() {
-    const entry = await EntryRepository.getLatestEntry();
+(function getLatestEntry_getsLatestEntry() {
+    const entry = EntryRepository.getLatestEntry();
     assertEqual("2025-08-16.js", entry.sourceFile, "getLatestEntry");
 })();
 
-(async function getLatestEntrySlug_getsLatestEntrySlug() {
+(function getLatestEntrySlug_getsLatestEntrySlug() {
     const expectedSlug = "de-tre-klassiske-overbevisningsformene";
-    const actualSlug = await EntryRepository.getLatestEntrySlug();
+    const actualSlug = EntryRepository.getLatestEntrySlug();
     assertEqual(expectedSlug, actualSlug, "getLatestEntrySlug");
 })();
 
-(async function getPreviousEntrySlug_getsPreviousEntrySlug() {
+(function getPreviousEntrySlug_getsPreviousEntrySlug() {
     const expectedSlug = "velkommen-til-bloggen";
     const currentEntrySlug = "de-tre-klassiske-overbevisningsformene"
-    const actualSlug = await EntryRepository.getPreviousEntrySlug(currentEntrySlug);
+    const actualSlug = EntryRepository.getPreviousEntrySlug(currentEntrySlug);
     assertEqual(expectedSlug, actualSlug, "getPreviousEntrySlug");
 })();
 
-(async function getNextEntrySlug_getsNextSlug() {
+(function getNextEntrySlug_getsNextSlug() {
     const expectedSlug = "de-tre-klassiske-overbevisningsformene";
     const currentEntrySlug = "velkommen-til-bloggen"
-    const actualSlug = await EntryRepository.getNextEntrySlug(currentEntrySlug);
+    const actualSlug = EntryRepository.getNextEntrySlug(currentEntrySlug);
     assertEqual(expectedSlug, actualSlug, "getNextEntrySlug");
 })();

@@ -8,7 +8,7 @@ export class BlogArchive extends BaseComponent {
     }
 
     async renderArchive() {
-        const entries = (await EntryRepository.getEntries()).reverse();
+        const entries = EntryRepository.getEntriesReversed();
         
         const html = `
             <main>
