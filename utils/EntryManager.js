@@ -1,33 +1,25 @@
-import { entryFileNames } from '../entries/index.js';
+import { entries } from '../entries/index.js';
 
 export class EntryManager {
     static slugToFilenameMap = new Map();
     static filenameToFirstSlugMap = new Map();
     static isSlugMapBuilt = false;
 
-    static async loadEntryModule(filename) {
-        const entryModule = await import(`../entries/${filename}`);
-        return entryModule.default;
+    static async getEntries() {
+        return entries;
     }
 
     static async getEntry(slug) {
-        const filename = await this.getFilenameFromSlug(slug) || slug;
-        return await this.loadEntryModule(filename);
+        return entries.find((entry) => entry.slugs.includes(slug));
     }
 
     static async getLatestEntry() {
-        const latestSlug = await EntryManager.getLatestEntrySlug();
-        return EntryManager.getEntry(latestSlug);
-    }
-
-    static async getEntriesAsArray() {
-        return Promise.all(entryFileNames.map(this.loadEntryModule))
+        return [...entries].pop();
     }
 
     static async getLatestEntrySlug() {
-        const latestFilename = entryFileNames[0];
-        const entry = await this.loadEntryModule(latestFilename);
-        return entry.slugs[0];
+        const latestEntry = getLatestEntry();
+        return latestEntry.slugs[0];
     }
 
     static async getPreviousEntrySlug(currentEntrySlug) {
