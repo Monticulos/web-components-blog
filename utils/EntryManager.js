@@ -18,34 +18,26 @@ export class EntryManager {
     }
 
     static async getLatestEntrySlug() {
-        const latestEntry = getLatestEntry();
+        const latestEntry = await this.getLatestEntry();
         return latestEntry.slugs[0];
     }
 
     static async getPreviousEntrySlug(currentEntrySlug) {
-        await this.buildSlugMap();
-        
-        const currentFilename = this.slugToFilenameMap.get(currentEntrySlug);
-        if (!currentFilename) return null;
-        
-        const currentIndex = entryFileNames.indexOf(currentFilename);
-        if (currentIndex === -1 || currentIndex === entryFileNames.length - 1) return null;
-        
-        const previousFilename = entryFileNames[currentIndex + 1];
-        return this.filenameToFirstSlugMap.get(previousFilename);
+        const currentIndex = entries.findIndex(entry => entry.slugs.includes(currentEntrySlug));
+        const isSlugNotfound = currentIndex === -1;
+        const isCurrentEntryOldest = currentIndex === 0;
+
+        if (isSlugNotfound || isCurrentEntryOldest) return null;
+        return entries[currentIndex - 1].slugs[0];
     }
 
     static async getNextEntrySlug(currentEntrySlug) {
-        await this.buildSlugMap();
-        
-        const currentFilename = this.slugToFilenameMap.get(currentEntrySlug);
-        if (!currentFilename) return null;
-        
-        const currentIndex = entryFileNames.indexOf(currentFilename);
-        if (currentIndex === -1 || currentIndex === 0) return null;
-        
-        const nextFilename = entryFileNames[currentIndex - 1];
-        return this.filenameToFirstSlugMap.get(nextFilename);
+        const currentIndex = entries.findIndex(entry => entry.slugs.includes(currentEntrySlug));
+        const isSlugNotfound = currentIndex === -1;
+        const isCurrentEntryNewest = currentIndex === entries.length - 1;
+
+        if (isSlugNotfound || isCurrentEntryNewest) return null;
+        return entries[currentIndex + 1].slugs[0];
     }
 
     static async getFilenameFromSlug(slug) {

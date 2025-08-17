@@ -3,8 +3,9 @@ import { EntryManager } from "./EntryManager.js";
 const TEST_PASS = "PASS:";
 const TEST_FAIL = "FAIL:";
 
-function assertEqual(expected, actual) {
-    const ASSERT_EQUAL_MESSAGE = `Expected '${expected}' to equal actual '${actual}'.`
+function assertEqual(expected, actual, testName) {
+    testName && console.log(testName);
+    const ASSERT_EQUAL_MESSAGE = `Expected '${expected}' to equal actual '${actual}'.\n`
     if (expected === actual) {
         console.log(TEST_PASS, ASSERT_EQUAL_MESSAGE);
     } else {
@@ -12,8 +13,9 @@ function assertEqual(expected, actual) {
     }
 }
 
-function assertGreaterThan(numberToCompare, actualNumber) {
-    const ASSERT_GREATER_THAN_MESSAGE = `Expected actual ${actualNumber} to be greater than ${numberToCompare}.`
+function assertGreaterThan(numberToCompare, actualNumber, testName) {
+    testName && console.log(testName);
+    const ASSERT_GREATER_THAN_MESSAGE = `Expected actual ${actualNumber} to be greater than ${numberToCompare}.\n`
     if (actualNumber > numberToCompare) {
         console.log(TEST_PASS, ASSERT_GREATER_THAN_MESSAGE);
     } else {
@@ -24,16 +26,36 @@ function assertGreaterThan(numberToCompare, actualNumber) {
 
 (async function getEntries_getsAllEntries() {
     const entries = await EntryManager.getEntries();
-    assertGreaterThan(1, entries.length);
+    assertGreaterThan(1, entries.length, "getEntries");
 })();
 
 (async function getEntry_getsEntry_fromGivenSlug() {
-    const slug = "velkommen-til-bloggen";
-    const entry = await EntryManager.getEntry(slug);
-    assertEqual(slug, entry.slugs[0])
+    const expectedSlug = "velkommen-til-bloggen";
+    const entry = await EntryManager.getEntry(expectedSlug);
+    assertEqual(expectedSlug, entry.slugs[0], "getEntry")
 })();
 
 (async function getLatestEntry_getsLatestEntry() {
     const entry = await EntryManager.getLatestEntry();
-    assertEqual("2025-08-16.js", entry.sourceFile);
+    assertEqual("2025-08-16.js", entry.sourceFile, "getLatestEntry");
+})();
+
+(async function getLatestEntrySlug_getsLatestEntrySlug() {
+    const expectedSlug = "de-tre-klassiske-overbevisningsformene";
+    const actualSlug = await EntryManager.getLatestEntrySlug();
+    assertEqual(expectedSlug, actualSlug, "getLatestEntrySlug");
+})();
+
+(async function getPreviousEntrySlug_getsPreviousEntrySlug() {
+    const expectedSlug = "velkommen-til-bloggen";
+    const currentEntrySlug = "de-tre-klassiske-overbevisningsformene"
+    const actualSlug = await EntryManager.getPreviousEntrySlug(currentEntrySlug);
+    assertEqual(expectedSlug, actualSlug, "getPreviousEntrySlug");
+})();
+
+(async function getNextEntrySlug_getsNextSlug() {
+    const expectedSlug = "de-tre-klassiske-overbevisningsformene";
+    const currentEntrySlug = "velkommen-til-bloggen"
+    const actualSlug = await EntryManager.getNextEntrySlug(currentEntrySlug);
+    assertEqual(expectedSlug, actualSlug, "getNextEntrySlug");
 })();
