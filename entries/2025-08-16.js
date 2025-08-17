@@ -47,11 +47,12 @@ const bodyText = `
 <p><i>PS: Noen inkluderer også et fjerde retorisk element, “kairos”. Kairos dreier seg om riktig tid og sted å levere sin argumentasjon - et slags metaelement. Men det får eventuelt bli et eget innlegg.</i></p>
 `
 
-const sources = new Map();
-sources.set('Retorikk (snl.no)', "https://snl.no/retorikk");
-sources.set('Aristoteles (snl.no)', "https://snl.no/Aristoteles");
-sources.set('What Are Ethos, Pathos, & Logos? (thesaurus.com)', "https://www.thesaurus.com/e/writing/ethos-pathos-logos/");
-sources.set('Aristotle’s Rhetoric (stanford.edu)', "https://plato.stanford.edu/entries/aristotle-rhetoric/#ThreMeanPers");
+const sources = {
+    "Retorikk (snl.no)": "https://snl.no/retorikk",
+    "Aristoteles (snl.no)": "https://snl.no/Aristoteles",
+    "What Are Ethos, Pathos, & Logos? (thesaurus.com)": "https://www.thesaurus.com/e/writing/ethos-pathos-logos/",
+    "Aristotle's Rhetoric (stanford.edu)": "https://plato.stanford.edu/entries/aristotle-rhetoric/#ThreMeanPers"
+};
 
 export default {
     title,

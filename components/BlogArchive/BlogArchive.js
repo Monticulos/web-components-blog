@@ -1,4 +1,4 @@
-import { EntryManager } from "../../utils/EntryManager.js"
+import { EntryRepository } from "../../utils/EntryRepository.js"
 import { BaseComponent } from "../BaseComponent.js";
 import { styles } from "./BlogArchiveStyles.js";
 
@@ -8,7 +8,7 @@ export class BlogArchive extends BaseComponent {
     }
 
     async renderArchive() {
-        const entries = await EntryManager.getEntriesAsArray();
+        const entries = EntryRepository.getEntriesReversed();
         
         const html = `
             <main>

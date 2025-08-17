@@ -1,4 +1,6 @@
-// Prevents flashes with wrong background color when loading page
+/**
+ * Prevents flashes with wrong background color when loading page
+ */ 
 (function retainThemeWhileLoading() {
     const storedPreference = localStorage.getItem("theme-preference");
     if (storedPreference) {
