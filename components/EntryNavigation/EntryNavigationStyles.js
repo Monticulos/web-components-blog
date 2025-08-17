@@ -1,4 +1,4 @@
-export const styles = `
+export const styles = /*css*/`
     nav {
         margin-top: 2rem;
         border-top: 1px solid var(--border-color);

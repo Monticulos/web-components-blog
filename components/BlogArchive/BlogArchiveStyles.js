@@ -1,4 +1,4 @@
-export const styles = `
+export const styles = /*css*/`
     h1 {
         margin-bottom: 1rem;
     }

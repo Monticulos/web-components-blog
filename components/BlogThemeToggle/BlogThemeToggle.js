@@ -14,7 +14,7 @@ export class BlogThemeToggle extends BaseComponent {
     }
 
     renderButton() {
-        const html = `<button aria-label="Bytt tema"></button>`;
+        const html = /*html*/`<button aria-label="Bytt tema"></button>`;
         
         this.shadowRoot.innerHTML = this.createTemplate(html, styles);
     }

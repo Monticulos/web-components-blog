@@ -38,7 +38,7 @@ export class EntryNavigation extends BaseComponent {
     async renderNextLink() {
         const slug = EntryRepository.getNextEntrySlug(this.#current)
         if (slug) {
-            return `<a href="./#${slug}">Neste innlegg</a>`
+            return /*html*/`<a href="./#${slug}">Neste innlegg</a>`
         }
         return "";
     }

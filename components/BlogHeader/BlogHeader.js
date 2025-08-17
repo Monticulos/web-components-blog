@@ -5,7 +5,7 @@ import { styles } from "./BlogHeaderStyles.js";
 
 export class BlogHeader extends BaseComponent {
     connectedCallback() {
-        const html = `
+        const html = /*html*/`
             <header>
                 <h1>
                     <a class="heading-link" href="./index.html">Bloggen ${pencilLineIcon}</a>
