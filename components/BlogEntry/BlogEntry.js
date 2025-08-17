@@ -1,4 +1,4 @@
-import { EntryManager } from '../../utils/EntryManager.js';
+import { EntryRepository } from '../../utils/EntryRepository.js';
 import '../BlogTags/BlogTags.js';
 import '../EntryNavigation/EntryNavigation.js';
 import { BaseComponent } from '../BaseComponent.js';
@@ -21,7 +21,7 @@ export class BlogEntry extends BaseComponent {
 
     async renderEntryFromSlug(slug) {
         try {
-            const entry = await EntryManager.getEntry(slug);
+            const entry = await EntryRepository.getEntry(slug);
             this.renderEntry(entry);
         } catch (error) {
             await this.renderNotFound();
@@ -29,7 +29,7 @@ export class BlogEntry extends BaseComponent {
     }
 
     async renderLatestEntry() {
-        const entry = await EntryManager.getLatestEntry();
+        const entry = await EntryRepository.getLatestEntry();
         this.renderEntry(entry);
     }
 
@@ -57,7 +57,7 @@ export class BlogEntry extends BaseComponent {
         if (!sources) return ``;
 
         const generateListItems = () => {
-            return Array.from(sources.entries())
+            return Object.entries(sources)
                 .map(([key, value]) => `<li><a href="${value}" target="_blank">${key}</a></li>`)
                 .join('')
         }
@@ -67,12 +67,11 @@ export class BlogEntry extends BaseComponent {
             <ol>
                 ${generateListItems()}
             </ol>
-
         `
     }
 
     async renderNotFound() {
-        const latestSlug = await EntryManager.getLatestEntrySlug();
+        const latestSlug = await EntryRepository.getLatestEntrySlug();
 
         const html = `
             <main>

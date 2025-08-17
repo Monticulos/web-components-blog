@@ -1,6 +1,10 @@
 import { entries } from '../entries/index.js';
 
-export class EntryManager {
+export class EntryRepository {
+    static async getEntries() {
+        return [...entries];
+    }
+
     static async getEntry(slug) {
         return entries.find((entry) => entry.slugs.includes(slug));
     }

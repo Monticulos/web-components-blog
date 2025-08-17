@@ -1,4 +1,4 @@
-import { EntryManager } from "../../utils/EntryManager.js";
+import { EntryRepository } from "../../utils/EntryRepository.js";
 import { BaseComponent } from "../BaseComponent.js";
 import { styles } from "./EntryNavigationStyles.js"
 
@@ -28,7 +28,7 @@ export class EntryNavigation extends BaseComponent {
     }
 
     async renderPreviousLink() {
-        const slug = await EntryManager.getPreviousEntrySlug(this.#current)
+        const slug = await EntryRepository.getPreviousEntrySlug(this.#current)
         if (slug) {
             return `<a href="./#${slug}">Forrige innlegg</a>`
         }
@@ -36,7 +36,7 @@ export class EntryNavigation extends BaseComponent {
     }
 
     async renderNextLink() {
-        const slug = await EntryManager.getNextEntrySlug(this.#current)
+        const slug = await EntryRepository.getNextEntrySlug(this.#current)
         if (slug) {
             return `<a href="./#${slug}">Neste innlegg</a>`
         }
