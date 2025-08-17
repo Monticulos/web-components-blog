@@ -1,26 +1,17 @@
 import fs from 'node:fs';
+import { FileUtils } from '../utils/FileUtils.js';
 
-const filterEntries = (fileNames) => fileNames.filter((fileName) => fileName !== "index.js");
-const sortEntries = (entries) => entries.toReversed();
+const fileNames = fs.readdirSync("../entries");
+const entryFileNames = FileUtils.filterEntries(fileNames);
+const sortedEntryFileNames = entryFileNames.toReversed();
+const fileNameArrayAsString = JSON.stringify(sortedEntryFileNames);
 
-fs.readdir("../entries", (readError, fileNames) => {
-    if (readError) {
-        console.log(readError);
+const fileContent = `export const entryFileNames = ${fileNameArrayAsString}`;
+
+fs.writeFile("../entries/index.js", fileContent, (writeError) => {
+    if (writeError) {
+        console.log(writeError);
         return;
     }
-
-    const entryFileNames = filterEntries(fileNames);
-    const sortedEntryFileNames = sortEntries(entryFileNames);
-
-    const commaSeparatedFileNames = sortedEntryFileNames.map(name => `"${name}"`).join(", ");
-    const fileContent = `export const entryFileNames = [${commaSeparatedFileNames}]`;
-    
-    fs.writeFile("../entries/index.js", fileContent, (writeError) => {
-        if (writeError) {
-            console.log(writeError);
-            return;
-        }
-        console.log("Successfully updated entries/index.js with:");
-        console.log(fileContent);
-    });
+    console.log(`Successfully updated entries/index.js with \n${fileContent}`);
 });
