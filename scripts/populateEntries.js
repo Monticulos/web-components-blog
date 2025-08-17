@@ -4,14 +4,21 @@ import { FileUtils } from '../utils/FileUtils.js';
 const fileNames = fs.readdirSync("../entries");
 const entryFileNames = FileUtils.filterEntries(fileNames);
 const sortedEntryFileNames = entryFileNames.toReversed();
-const fileNameArrayAsString = JSON.stringify(sortedEntryFileNames);
 
-const fileContent = `export const entryFileNames = ${fileNameArrayAsString}`;
+const entries = await Promise.all(
+    sortedEntryFileNames.map(async fileName => {
+        const entry = await import(`../entries/${fileName}`);
+        return entry.default;
+    })
+);
+
+const EntryArrayAsString = JSON.stringify(entries, null, 2);
+const fileContent = `export const entries = ${EntryArrayAsString}`;
 
 fs.writeFile("../entries/index.js", fileContent, (writeError) => {
     if (writeError) {
         console.log(writeError);
         return;
     }
-    console.log(`Successfully updated entries/index.js with \n${fileContent}`);
+    console.log(`Successfully updated entries/index.js.`);
 });
